@@ -1,5 +1,6 @@
 package com.milo.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -24,6 +25,7 @@ public class User {
 
     private String role; // "USER" hoặc "ADMIN" [cite: 14]
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Transaction> transactions;
 }

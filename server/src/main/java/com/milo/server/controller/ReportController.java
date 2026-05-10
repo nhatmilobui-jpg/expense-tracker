@@ -5,12 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/reports")
-@CrossOrigin("*")
 public class ReportController {
 
     @Autowired
@@ -27,6 +28,14 @@ public class ReportController {
     public ResponseEntity<List<Map<String, Object>>> getMonthlyComparison(
             @PathVariable Long userId,
             @RequestParam(defaultValue = "2026") int year) {
-        return ResponseEntity.ok(transactionRepository.sumExpensesByMonth(userId, year));
+        List<Object[]> rows = transactionRepository.sumExpensesByMonth(userId, year);
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (Object[] row : rows) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("month", row[0]);
+            map.put("total", row[1]);
+            result.add(map);
+        }
+        return ResponseEntity.ok(result);
     }
 }

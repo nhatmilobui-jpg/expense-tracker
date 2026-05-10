@@ -20,11 +20,11 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     List<Map<String, Object>> sumExpensesByCategory(@Param("userId") Long userId);
 
     // 3. So sánh chi tiêu qua các tháng cho biểu đồ cột [cite: 6, 12]
-    @Query(value = "SELECT EXTRACT(MONTH FROM transaction_date) as month, SUM(amount) as total " +
-            "FROM transactions " +
-            "WHERE user_id = :userId AND EXTRACT(YEAR FROM transaction_date) = :year " +
-            "GROUP BY month ORDER BY month", nativeQuery = true)
-    List<Map<String, Object>> sumExpensesByMonth(@Param("userId") Long userId, @Param("year") int year);
+    @Query("SELECT month(t.transactionDate), sum(t.amount) " +
+            "FROM Transaction t " +
+            "WHERE t.user.userId = :userId AND year(t.transactionDate) = :year " +
+            "GROUP BY month(t.transactionDate) ORDER BY month(t.transactionDate)")
+    List<Object[]> sumExpensesByMonth(@Param("userId") Long userId, @Param("year") int year);
 
     // 4. Thống kê toàn hệ thống dành cho Admin [cite: 9]
     @Query("SELECT t.category.type as type, SUM(t.amount) as total " +

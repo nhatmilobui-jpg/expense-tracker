@@ -28,4 +28,8 @@ public class AuthService {
         existingUser.setPassword(updatedUser.getPassword());
         return userRepository.save(existingUser);
     }
+
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElse(null);
+    }
 }

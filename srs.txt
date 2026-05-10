@@ -1,0 +1,31 @@
+Mô tả dự án
+Ứng dụng web giúp người dùng ghi chép, thống kê và phân tích chi tiêu hàng
+ngày, hàng tháng.
+Người dùng có thể nhập các khoản thu – chi, phân loại theo nhóm (ăn uống, đi lại,
+mua sắm, hóa đơn, v.v.), và xem biểu đồ tổng hợp chi tiêu.
+Hệ thống gồm phần người dùng và phần quản trị để theo dõi dữ liệu tổng hợp.
+
+a. Chức năng người dùng
+- Đăng ký, đăng nhập, cập nhật thông tin cá nhân.
+- Thêm, sửa, xóa khoản chi tiêu/thu nhập.
+- Phân loại chi tiêu theo nhóm.
+- Xem báo cáo chi tiêu theo ngày/tháng/năm.
+- Biểu đồ thống kê và so sánh các tháng.
+
+b. Chức năng quản trị (Admin)
+- Theo dõi tổng chi tiêu của tất cả người dùng (nếu là hệ thống chung).
+- Quản lý danh mục chi tiêu mặc định.
+- Quản lý tài khoản người dùng.
+- Báo cáo thống kê toàn hệ thống.
+
+4. Yêu cầu hiển thị giao diện
+- Trang đăng nhập/đăng ký: form nhập tài khoản, mật khẩu.
+- Trang chính: danh sách các khoản chi tiêu theo thời gian.
+- Trang thêm khoản chi tiêu: form nhập chi tiết, chọn nhóm.
+- Trang biểu đồ: hiển thị thống kê bằng biểu đồ tròn, cột.
+- Giao diện thân thiện, trực quan, hỗ trợ responsive.
+
+5. Yêu cầu dev
+- Frontend: ReactJS, HTML, CSS, JavaScript.
+- Backend: Java/Spring, PostgreSQL.
+- Bảo mật: đăng nhập, phân quyền (User/Admin).

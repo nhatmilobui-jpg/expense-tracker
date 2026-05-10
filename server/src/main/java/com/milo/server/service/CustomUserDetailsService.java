@@ -20,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         // Trả về đối tượng UserDetails mà Spring Security hiểu được
         return org.springframework.security.core.userdetails.User.withUsername(user.getUsername())
-                .password("{noop}" + user.getPassword()) // {noop} để báo là mật khẩu KHÔNG mã hóa theo SRS
+                .password(user.getPassword()) // Mật khẩu plain text theo SRS, NoOpPasswordEncoder so sánh trực tiếp
                 .roles(user.getRole()) // Phân quyền USER/ADMIN
                 .build();
     }
